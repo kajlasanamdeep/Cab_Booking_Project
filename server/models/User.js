@@ -28,7 +28,9 @@ const UserModel = new Schema({
         type: {
             type: String, default: "Point"
         },
-        coordinates: [Number]
+        coordinates:{
+            type:[Number],index:'2dsphere',default:[0,0]
+        }
     },
     otp:{
         type:String,required:true

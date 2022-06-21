@@ -6,8 +6,8 @@ const validateRegister = (req)=>{
         cabModel: joi.string().required(),
         cabChassiNumber: joi.string().required(),
         cabNumberPlate: joi.string().required(),
-        cabRentPerHour: joi.string().required(),
-        cabRentPerDay: joi.string().required(),
+        cabRentPerMeter: joi.string().required(),
+        cabRentPerKiloMeter: joi.string().required(),
         maxPassengers: joi.number().required(),
         cabType: joi.string().required(),
         cabDescription: joi.string().optional()

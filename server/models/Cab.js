@@ -13,17 +13,17 @@ const CabModel = Schema({
     cabNumberPlate:{
         type:String,required:true
     },
-    cabRentPerHour:{
+    cabRentPerMeter:{
         type:String,required:true
     },
-    cabRentPerDay:{
+    cabRentPerKiloMeter:{
         type:String,required:true
     },
     maxPassengers:{
         type:Number,required:true
     },
     cabType:{
-        type:String,enum:['SUV','Sedan','Limousine','Luxury','MPV','Hatchback'],required:true
+        type:String,enum:['SUV','SEDAN','MPV','HATCHBACK'],required:true
     },
     ownerID:{
         type:mongoose.Schema.Types.ObjectId,ref:'Users',required:true

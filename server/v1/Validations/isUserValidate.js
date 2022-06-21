@@ -14,8 +14,8 @@ const validateRegister = (req) => {
         phoneNo:joi.string().min(5).required(),
         countryCode:joi.string().min(2).required(),
         email: joi.string().required(),
-        password: joi.string().required(),
-        userType: joi.string().required(),
+        userType:joi.string().valid("USER","DRIVER").required(),
+        password: joi.string().required()
     });
     return UserRegistrationSchema.validate(req.body);
 };

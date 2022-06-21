@@ -1,0 +1,37 @@
+{
+  "name": "cab_booking_project",
+  "description": "...demo...project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "env-cmd nodemon ./index.js",
+    "start": "env-cmd node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kajlasanamdeep/Cab_Booking_Project.git"
+  },
+  "author": "sanamdeep kajla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kajlasanamdeep/Cab_Booking_Project/issues"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.3",
+    "hbs": "^4.2.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.1",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.3",
+    "path": "^0.12.7",
+    "socket.io": "^4.5.0"
+  },
+  "homepage": "https://github.com/kajlasanamdeep/Cab_Booking_Project#readme"
+}

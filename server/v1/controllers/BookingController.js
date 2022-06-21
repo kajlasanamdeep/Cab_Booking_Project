@@ -6,6 +6,7 @@ const statusCodeList = require("../../statusCodes");
 const messageList = require("../../messages");
 const { default: mongoose } = require('mongoose');
 const statusCode = statusCodeList.statusCodes.STATUS_CODE;
+const constants = require('../../constant/index').constant;
 const messages = messageList.messages.MESSAGES;
 
 async function registerNewBooking(req,res){
@@ -16,14 +17,6 @@ async function registerNewBooking(req,res){
         const existingBooking = await Model.Bookings.Booking.findOne(req.body);
         if(existingBooking) return universalFunction.sendResponse(req,res,statusCode.UNPROCESSABLE_ENTITY,messages.BOOKING_ALREADY_IN_PROCESS);
         req.body.customerID = mongoose.Types.ObjectId(user._id);
-        req.body.pickupAddressLocation = {
-            type: "Point",
-            coordinates: [0,0]
-        };
-        req.body.destinationAddressLocation = {
-            type: "Point",
-            coordinates: [0,0]
-        };
         let data = await new Model.Bookings.Booking(req.body).save();
         return universalFunction.sendResponse(req, res, statusCode.SUCCESS, messages.BOOKING_REGISTER_SUCCESSFULLY, data);
     } catch (error) {

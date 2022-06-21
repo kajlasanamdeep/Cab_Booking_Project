@@ -6,6 +6,7 @@ const statusCodeList = require("../../statusCodes");
 const messageList = require("../../messages");
 const statusCode = statusCodeList.statusCodes.STATUS_CODE;
 const messages = messageList.messages.MESSAGES;
+const constants = require('../../constant/index').constant;
 const { default: mongoose } = require('mongoose');
 
 
@@ -20,14 +21,15 @@ async function registerNewCab(req,res){
         if(NumberPlateCab || chassiNumCab) return universalFunction.sendResponse(req, res, statusCode.UNPROCESSABLE_ENTITY, messages.CAB_WITH_THIS_DETAILS_ALREADY_REGISTERED);
         req.body.ownerID = mongoose.Types.ObjectId(user._id);
         let cab = await new Model.Cabs.Cab(req.body).save();
+        let cabImage;
         if (req.file) {
-            await new Model.Cabs.CabImage({
+            cabImage = await new Model.Cabs.CabImage({
                 cabID: mongoose.Types.ObjectId(cab._id), 
-                Image: req.file.path,
+                Image: `${constants.FILE_PATH.CABS}/${req.file.filename}`,
                 isUploaded: true
             }).save();
         }
-        let data = {cab:cab,cabImage:req.file.path};
+        let data = {cab:cab,cabImage:cabImage};
         return universalFunction.sendResponse(req, res, statusCode.SUCCESS, messages.CAB_REGISTER_SUCCESSFULLY, data);
     } catch (error) {
         throw error

@@ -8,7 +8,7 @@ const BookingModel = Schema({
         type:mongoose.Schema.Types.ObjectId,ref:"Users",required:true
     }, 
     cabType:{
-        type:String,required:true
+        type: String,enum: ['SUV', 'SEDAN', 'MPV', 'HATCHBACK'],required:true
     },
     bookingDate:{
         type:String,required:true
@@ -23,7 +23,9 @@ const BookingModel = Schema({
         type: {
             type: String, default: "Point"
         },
-        coordinates: [Number]
+        coordinates: {
+            type: [Number], index: '2dsphere'
+        }
     },
     destinationAddressName:{
         type:String,required:true
@@ -32,7 +34,9 @@ const BookingModel = Schema({
         type: {
             type: String, default: "Point"
         },
-        coordinates: [Number]
+        coordinates: {
+            type: [Number], index: '2dsphere'
+        }
     },
     bookingStatus:{
         type:String,enum:['PENDING','ACCEPTED','CANCELED'],default:"PENDING"

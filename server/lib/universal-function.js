@@ -7,14 +7,13 @@ const messageList = require("../messages");
 const statusCode = statusCodeList.statusCodes.STATUS_CODE;
 const messages = messageList.messages.MESSAGES;
 
-const sendResponse = async ( req, res, code, message, data) => {
+const sendResponse = async (req, res, code, message, data) => {
 		code = code || statusCode.SUCCESS;
 		message = message || messages.SUCCESS;
 		data = data || {};
 		return res.status(code).send({
-			statusCode: code,
 			message: message,
-			data: data
+			data: data,
 		});
 };
 const unauthorizedResponse= async (req,res,message) => {

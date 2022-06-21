@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Controller = require('../controllers/index');
 const Upload = require('../../services/FileUploadService');
-const Authorization = require('../../polices/index');
+const Authorization = require('../../auth/index');
 
+router.get('/register',(req,res)=>{
+    return res.render('signup')
+})
 router.post('/register',Upload.user.single('userImage'),Controller.UserController.register);
 router.post('/login',Controller.UserController.login);
 router.post('/updateImage',Authorization.isUserAuth,Upload.user.single('userImage'),Controller.UserController.updateImage);
